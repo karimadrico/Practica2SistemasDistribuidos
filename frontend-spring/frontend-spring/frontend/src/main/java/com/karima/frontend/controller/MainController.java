@@ -30,6 +30,11 @@ public class MainController {
         return callApi("/api/pokemon-error", model);
     }
 
+    @GetMapping("/login")
+    public String login() {
+    return "login";
+    }
+
     private String callApi(String endpoint, Model model) {
     RestTemplate restTemplate = new RestTemplate();
 
