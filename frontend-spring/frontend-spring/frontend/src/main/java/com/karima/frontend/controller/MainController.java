@@ -31,13 +31,17 @@ public class MainController {
     }
 
     private String callApi(String endpoint, Model model) {
-        RestTemplate restTemplate = new RestTemplate();
-        try {
-            String response = restTemplate.getForObject(API_URL + endpoint, String.class);
-            model.addAttribute("resultado", response);
-        } catch (Exception e) {
-            model.addAttribute("resultado", "Error al conectar con la API");
-        }
-        return "result";
+    RestTemplate restTemplate = new RestTemplate();
+    try {
+        String response = restTemplate.getForObject(API_URL + endpoint, String.class);
+        model.addAttribute("resultado", response);
+    } catch (org.springframework.web.client.HttpStatusCodeException e) {
+        // Aquí capturamos el error REAL de Flask
+        model.addAttribute("resultado", e.getResponseBodyAsString());
+    } catch (Exception e) {
+        model.addAttribute("resultado", "Error real de conexión con la API");
     }
+    return "result";
+}
+
 }
