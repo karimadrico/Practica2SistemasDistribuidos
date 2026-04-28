@@ -32,20 +32,32 @@ public class MainController {
 
     private String callApi(String endpoint, Model model) {
     RestTemplate restTemplate = new RestTemplate();
+
     try {
         String response = restTemplate.getForObject(API_URL + endpoint, String.class);
         model.addAttribute("resultado", response);
+
     } catch (org.springframework.web.client.HttpStatusCodeException e) {
-   String body = e.getResponseBodyAsString();
 
-   if (body.contains("Error al leer archivo")) {
-       model.addAttribute("resultado", "No se pudo acceder al archivo");
-   } else if (body.contains("Error en base de datos")) {
-       model.addAttribute("resultado", "Error al acceder a la base de datos");
-   } else if (body.contains("Error llamando a API externa")) {
-       model.addAttribute("resultado", "Error al consultar el servicio externo");
-   } else {
-       model.addAttribute("resultado", "Error desconocido");
-   }
+        String body = e.getResponseBodyAsString();
+
+        if (body.contains("Error al leer archivo")) {
+            model.addAttribute("resultado", "No se pudo acceder al archivo");
+
+        } else if (body.contains("Error en base de datos")) {
+            model.addAttribute("resultado", "Error al acceder a la base de datos");
+
+        } else if (body.contains("Error llamando a API externa")) {
+            model.addAttribute("resultado", "Error al consultar el servicio externo");
+
+        } else {
+            model.addAttribute("resultado", "Error desconocido");
+        }
+
+    } catch (Exception e) {
+        model.addAttribute("resultado", "Error de conexión con la API");
+    }
+
+    return "result";
 }
-
+}
