@@ -52,7 +52,7 @@ mvn spring-boot:run
 ### Acceso
 http://localhost:8080
 
-#Practica finalizada
+# Practica finalizada
 Página principal ✔
 Login ✔
 Pantalla de simulación ✔
