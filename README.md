@@ -63,3 +63,20 @@ Excepciones API ✔
 Manejo en frontend ✔
 Traducción de errores ✔
 
+## Pruebas con Postman
+
+Se han realizado pruebas de los endpoints de la API Flask utilizando Postman, obteniendo los siguientes resultados:
+
+- /api/file-error 
+  → Error al leer archivo 
+  → Detalle: archivo no encontrado
+
+- /api/db-error 
+  → Error en base de datos 
+  → Detalle: tabla inexistente
+
+- /api/pokemon-error 
+  → Error llamando a API externa 
+  → Detalle: recurso no encontrado (404)
+
+Todos los endpoints devuelven correctamente errores controlados con código 500.
