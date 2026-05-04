@@ -40,7 +40,7 @@ public class MainController {
 
     try {
         String response = restTemplate.getForObject(API_URL + endpoint, String.class);
-        model.addAttribute("resultado", response);
+        model.addAttribute("resultado", "Operacion realizada correctamente");
 
     } catch (org.springframework.web.client.HttpStatusCodeException e) {
 
