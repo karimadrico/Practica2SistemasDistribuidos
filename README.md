@@ -37,3 +37,29 @@ Ejecutar:
 cd backend-python
 source venv/bin/activate
 python app.py
+
+## Ejecución completa
+
+### Backend Flask
+cd backend-python
+source venv/bin/activate
+python app.py
+
+### Frontend Spring Boot
+cd frontend-spring/frontend-spring/frontend
+mvn spring-boot:run
+
+### Acceso
+http://localhost:8080
+
+#Practica finalizada
+Página principal ✔
+Login ✔
+Pantalla de simulación ✔
+API Flask ✔
+Excepciones archivo ✔
+Excepciones BD ✔
+Excepciones API ✔
+Manejo en frontend ✔
+Traducción de errores ✔
+
